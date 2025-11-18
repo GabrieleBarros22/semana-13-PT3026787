@@ -1,0 +1,26 @@
+name: Testar cadastro de usuários e turma
+
+on:
+  push:
+    branches: [ "main" ]
+    paths:
+      - "aluno.py"
+      - "turma.py"
+      - "testes.py"
+      - "main.py"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Fazer checkout do código
+        uses: actions/checkout@v4
+
+      - name: Configurar Python 3.9
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.9"
+
+      - name: Executar testes
+        run: python testes.py
